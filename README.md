@@ -52,7 +52,7 @@ func NewOf(input <T:StringKind|*StringKind|Concater>) Whatever<T> {
 }
 
 type Concater interface {
-  Concat(right <T:Struct|*Struct>) T
+  Concat(right <T:Any>) T
 }
 
 // type concatenable struct{}
@@ -66,6 +66,8 @@ type Whatever<T:StringKind|*StringKind|Concater> struct{
   Value T
 }
 //type Whatever<T:Any> struct{}
+//type Whatever<T:Struct|*Struct> struct{}
+//type Whatever<T:BasicKind|*BasicKind|(String|Int|Int8)Kind|*...|Struct|*Struct|UserInterface definition> struct{}
 
 func (w Whatever<T>) Hi() string {
   return fmt.Sprintf(`"Hi, my name is %T"`, w.Value)
@@ -93,6 +95,6 @@ func (w *Whatever<T>) Concat(right T) {
 func ManyTypes(x <T:Any>, xx <U:Any>) (T,U) {
   return x,xx
 }
-
-// something like that maybe...
 ```
+
+something like that maybe...
