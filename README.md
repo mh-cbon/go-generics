@@ -47,12 +47,12 @@ func NewSliceOf(input ...<T:Any>) []T {
   return ret
 }
 
-func NewOf(input <T:Any>) Whatever<T> {
+func NewOf(input <T:StringKind|*StringKind|Concater>) Whatever<T> {
   return Whatever<T>{}
 }
 
-type Concater<T:Struct|*Struct> interface {
-  Concat(right T) T
+type Concater interface {
+  Concat(right <T:Struct|*Struct>) T
 }
 
 // type concatenable struct{}
